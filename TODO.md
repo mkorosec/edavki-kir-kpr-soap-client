@@ -1,0 +1,9 @@
+- edavkiclient cleanup - split v dva classa za vsak service?
+- sqllite baza za log datotek? kaj je bilo poslano, kdaj, statusi, itd?
+- wsimport - lahko to prenesem v pom.xml da je del mvn builda?
+- git push na github 
+  - odstrani vse podatke in daj nek test set / demo
+  - readme
+  - install instructions
+- nastavitve - test vs prod
+- reimplement project with REST endpoints - with jaw-rs
