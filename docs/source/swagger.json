@@ -1,0 +1,1303 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "eDavki KIR/KPR service",
+    "description": "Description of API version 1.0, build 1.2.0.319, build: 1.2.0.319, build date: 02.10.2024 08:42:05, from: main:00d8d64d474a4f4826e6bc639487da843cdd9ba5.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "/InvoiceBookService"
+    }
+  ],
+  "paths": {
+    "/api/v1/Auth/Representing/{taxPayerId}/{taxPayerType}": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Set the representing data authenticated by provided JWT.",
+        "parameters": [
+          {
+            "name": "taxPayerId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taxPayerType",
+            "in": "path",
+            "description": "\n\n0 = FO\n\n1 = SP\n\n2 = PO",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxPayerType"
+            },
+            "x-enumNames": [
+              "FO",
+              "SP",
+              "PO"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                },
+                "example": {"expires":"2024-01-01T00:12:01Z","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDYxMTMxMCIsImp0aSI6IjA0ZDgwYTYxLTk1MTEtNDEzNy04ODI1LTEwNTc4MzllZTkxYSIsImlhdCI6MTcyMjUwNTExMSwiTG9naW5JZCI6IjI3OSIsIkxvZ2luVHlwZSI6IkNlcnRpZmljYXRlIiwiVXNlclByb2ZpbGVJZCI6IjQzMCIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJJZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjU0NjExMzEwIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzIyNTkxNTExLCJpc3MiOiJodHRwczovL2R1cnN3ZWIuZW5kYXZhLm5ldDo0NjIvIiwiYXVkIjoiaHR0cHM6Ly9kdXJzd2ViLmVuZGF2YS5uZXQ6NDYyLyJ9.pl4AmJkVRTZkmYKuKCz13xkvS5V2cuIhRr0qvAnb5bM"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                },
+                "example": {"expires":"2024-01-01T00:12:01Z","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDYxMTMxMCIsImp0aSI6IjA0ZDgwYTYxLTk1MTEtNDEzNy04ODI1LTEwNTc4MzllZTkxYSIsImlhdCI6MTcyMjUwNTExMSwiTG9naW5JZCI6IjI3OSIsIkxvZ2luVHlwZSI6IkNlcnRpZmljYXRlIiwiVXNlclByb2ZpbGVJZCI6IjQzMCIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJJZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjU0NjExMzEwIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzIyNTkxNTExLCJpc3MiOiJodHRwczovL2R1cnN3ZWIuZW5kYXZhLm5ldDo0NjIvIiwiYXVkIjoiaHR0cHM6Ly9kdXJzd2ViLmVuZGF2YS5uZXQ6NDYyLyJ9.pl4AmJkVRTZkmYKuKCz13xkvS5V2cuIhRr0qvAnb5bM"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                },
+                "example": {"expires":"2024-01-01T00:12:01Z","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDYxMTMxMCIsImp0aSI6IjA0ZDgwYTYxLTk1MTEtNDEzNy04ODI1LTEwNTc4MzllZTkxYSIsImlhdCI6MTcyMjUwNTExMSwiTG9naW5JZCI6IjI3OSIsIkxvZ2luVHlwZSI6IkNlcnRpZmljYXRlIiwiVXNlclByb2ZpbGVJZCI6IjQzMCIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJJZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjU0NjExMzEwIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzIyNTkxNTExLCJpc3MiOiJodHRwczovL2R1cnN3ZWIuZW5kYXZhLm5ldDo0NjIvIiwiYXVkIjoiaHR0cHM6Ly9kdXJzd2ViLmVuZGF2YS5uZXQ6NDYyLyJ9.pl4AmJkVRTZkmYKuKCz13xkvS5V2cuIhRr0qvAnb5bM"}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Auth/Certificate/Representing/{taxPayerId}/{taxPayerType}": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Set the representing data authenticated by provided client certificate.",
+        "parameters": [
+          {
+            "name": "taxPayerId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taxPayerType",
+            "in": "path",
+            "description": "\n\n0 = FO\n\n1 = SP\n\n2 = PO",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxPayerType"
+            },
+            "x-enumNames": [
+              "FO",
+              "SP",
+              "PO"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                },
+                "example": {"expires":"2024-01-01T00:12:01Z","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDYxMTMxMCIsImp0aSI6IjA0ZDgwYTYxLTk1MTEtNDEzNy04ODI1LTEwNTc4MzllZTkxYSIsImlhdCI6MTcyMjUwNTExMSwiTG9naW5JZCI6IjI3OSIsIkxvZ2luVHlwZSI6IkNlcnRpZmljYXRlIiwiVXNlclByb2ZpbGVJZCI6IjQzMCIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJJZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjU0NjExMzEwIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzIyNTkxNTExLCJpc3MiOiJodHRwczovL2R1cnN3ZWIuZW5kYXZhLm5ldDo0NjIvIiwiYXVkIjoiaHR0cHM6Ly9kdXJzd2ViLmVuZGF2YS5uZXQ6NDYyLyJ9.pl4AmJkVRTZkmYKuKCz13xkvS5V2cuIhRr0qvAnb5bM"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                },
+                "example": {"expires":"2024-01-01T00:12:01Z","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDYxMTMxMCIsImp0aSI6IjA0ZDgwYTYxLTk1MTEtNDEzNy04ODI1LTEwNTc4MzllZTkxYSIsImlhdCI6MTcyMjUwNTExMSwiTG9naW5JZCI6IjI3OSIsIkxvZ2luVHlwZSI6IkNlcnRpZmljYXRlIiwiVXNlclByb2ZpbGVJZCI6IjQzMCIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJJZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjU0NjExMzEwIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzIyNTkxNTExLCJpc3MiOiJodHRwczovL2R1cnN3ZWIuZW5kYXZhLm5ldDo0NjIvIiwiYXVkIjoiaHR0cHM6Ly9kdXJzd2ViLmVuZGF2YS5uZXQ6NDYyLyJ9.pl4AmJkVRTZkmYKuKCz13xkvS5V2cuIhRr0qvAnb5bM"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                },
+                "example": {"expires":"2024-01-01T00:12:01Z","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDYxMTMxMCIsImp0aSI6IjA0ZDgwYTYxLTk1MTEtNDEzNy04ODI1LTEwNTc4MzllZTkxYSIsImlhdCI6MTcyMjUwNTExMSwiTG9naW5JZCI6IjI3OSIsIkxvZ2luVHlwZSI6IkNlcnRpZmljYXRlIiwiVXNlclByb2ZpbGVJZCI6IjQzMCIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJJZCI6IjU0NjExMzEwIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjU0NjExMzEwIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzIyNTkxNTExLCJpc3MiOiJodHRwczovL2R1cnN3ZWIuZW5kYXZhLm5ldDo0NjIvIiwiYXVkIjoiaHR0cHM6Ly9kdXJzd2ViLmVuZGF2YS5uZXQ6NDYyLyJ9.pl4AmJkVRTZkmYKuKCz13xkvS5V2cuIhRr0qvAnb5bM"}
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Documents/OpenPeriods/{formCode}": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Get the list of open periods for the specified taxpayer and form type.",
+        "parameters": [
+          {
+            "name": "formCode",
+            "in": "path",
+            "description": "The form code.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "In case of success. Object with a list of open periods.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenPeriodsResponse"
+                },
+                "example": {"openPeriods":[{"period":{"begin":"2024-01-01T00:00:00","end":"2024-01-31T00:00:00"},"representedForeignerId":null,"dueDate":null},{"period":{"begin":"2024-02-01T00:00:00","end":"2024-02-29T00:00:00"},"representedForeignerId":"XYZ1234567890","dueDate":null}]}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenPeriodsResponse"
+                },
+                "example": {"openPeriods":[{"period":{"begin":"2024-01-01T00:00:00","end":"2024-01-31T00:00:00"},"representedForeignerId":null,"dueDate":null},{"period":{"begin":"2024-02-01T00:00:00","end":"2024-02-29T00:00:00"},"representedForeignerId":"XYZ1234567890","dueDate":null}]}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenPeriodsResponse"
+                },
+                "example": {"openPeriods":[{"period":{"begin":"2024-01-01T00:00:00","end":"2024-01-31T00:00:00"},"representedForeignerId":null,"dueDate":null},{"period":{"begin":"2024-02-01T00:00:00","end":"2024-02-29T00:00:00"},"representedForeignerId":"XYZ1234567890","dueDate":null}]}
+              }
+            }
+          },
+          "400": {
+            "description": "In case of error in parameters: additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              }
+            }
+          },
+          "401": {
+            "description": "If not authorized. Optional response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "404": {
+            "description": "If resource has not been found. Response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "500": {
+            "description": "In case of internal server error. Response with incident ID for further analysis.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Documents/Permissions": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Get the list of permissions for the user and optionally specified form type.",
+        "parameters": [
+          {
+            "name": "formCode",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "In case of success. Object with a list of permissions.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentPermissionsResponse"
+                },
+                "example": {"permissions":[{"mandator":{"id":12345678,"type":0},"formCode":"DDV_O","fill":true,"sign":false,"viewSent":true},{"mandator":{"id":23456789,"type":2},"formCode":"DDV_O","fill":true,"sign":true,"viewSent":true}]}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentPermissionsResponse"
+                },
+                "example": {"permissions":[{"mandator":{"id":12345678,"type":0},"formCode":"DDV_O","fill":true,"sign":false,"viewSent":true},{"mandator":{"id":23456789,"type":2},"formCode":"DDV_O","fill":true,"sign":true,"viewSent":true}]}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentPermissionsResponse"
+                },
+                "example": {"permissions":[{"mandator":{"id":12345678,"type":0},"formCode":"DDV_O","fill":true,"sign":false,"viewSent":true},{"mandator":{"id":23456789,"type":2},"formCode":"DDV_O","fill":true,"sign":true,"viewSent":true}]}
+              }
+            }
+          },
+          "400": {
+            "description": "In case of error in parameters: additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              }
+            }
+          },
+          "401": {
+            "description": "If not authorized. Optional response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "404": {
+            "description": "If resource has not been found. Response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "500": {
+            "description": "In case of internal server error. Response with incident ID for further analysis.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Heartbeat": {
+      "get": {
+        "tags": [
+          "Heartbeat"
+        ],
+        "summary": "Application heartbeat with some info on application.",
+        "responses": {
+          "200": {
+            "description": "In case of success. Object with current date on server.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeartbeatResponse"
+                },
+                "example": {"hostingEnvironment":"example","apiVersion":"1","productVersion":"1.1.0.146, build date: 05.08.2024 10:40:15, from: main:844cea9803d3b5c0deef86ae55ace6ba94d44bc3","serverTime":"2024-10-03T11:18:27.7921779+02:00"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeartbeatResponse"
+                },
+                "example": {"hostingEnvironment":"example","apiVersion":"1","productVersion":"1.1.0.146, build date: 05.08.2024 10:40:15, from: main:844cea9803d3b5c0deef86ae55ace6ba94d44bc3","serverTime":"2024-10-03T11:18:27.7921779+02:00"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeartbeatResponse"
+                },
+                "example": {"hostingEnvironment":"example","apiVersion":"1","productVersion":"1.1.0.146, build date: 05.08.2024 10:40:15, from: main:844cea9803d3b5c0deef86ae55ace6ba94d44bc3","serverTime":"2024-10-03T11:18:27.7921779+02:00"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/InvoiceBook/Status/{edpId}": {
+      "get": {
+        "tags": [
+          "InvoiceBook"
+        ],
+        "summary": "Get the status of the uploaded invoice book.",
+        "parameters": [
+          {
+            "name": "edpId",
+            "in": "path",
+            "description": "The EDP ID of the invoice book.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "In case of success. Object with the status.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceBookStatusResponse"
+                },
+                "example": {"status":3,"validationMessage":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","backendMessage":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceBookStatusResponse"
+                },
+                "example": {"status":3,"validationMessage":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","backendMessage":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceBookStatusResponse"
+                },
+                "example": {"status":3,"validationMessage":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","backendMessage":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+              }
+            }
+          },
+          "400": {
+            "description": "In case of error in parameters: additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              }
+            }
+          },
+          "401": {
+            "description": "If not authorized. Optional response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "404": {
+            "description": "If resource has not been found. Response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "500": {
+            "description": "In case of internal server error. Response with incident ID for further analysis.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/InvoiceBook": {
+      "post": {
+        "tags": [
+          "InvoiceBook"
+        ],
+        "summary": "Upload a new invoice book using multipart/form-data formatted request. The request must contain exactly two sections:\r\n\r\n- first containing JSON encoded request metadata of type UploadInvoiceBookRequest; expected media types are \"application/json\", \"application/*+json\", \"text/json\"\r\n- second containing binary invoice book data; expected media types are \"application/octet-stream\", \"application/x-zip-compressed\");",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "section1",
+                  "section2"
+                ],
+                "type": "object",
+                "properties": {
+                  "section1": {
+                    "$ref": "#/components/schemas/UploadInvoiceBookRequest"
+                  },
+                  "section2": {
+                    "type": "file",
+                    "description": "Second section, containing binary invoice book data. Expected media types are \"application/octet-stream\", \"application/x-zip-compressed\".",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "section1": {
+                  "contentType": "application/json"
+                },
+                "section2": {
+                  "contentType": "application/octet-stream"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "In case of success. Object with the invoice book EDP ID.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadInvoiceBookResponse"
+                },
+                "example": {"edpId":"KIR-12345678-123","status":0}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadInvoiceBookResponse"
+                },
+                "example": {"edpId":"KIR-12345678-123","status":0}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadInvoiceBookResponse"
+                },
+                "example": {"edpId":"KIR-12345678-123","status":0}
+              }
+            }
+          },
+          "400": {
+            "description": "In case of error in parameters: additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":0,"errorMessage":"Neveljaven parameter xyz.","incidentId":"Zv5hYxzAS5aTeqBdbA-2CgAAAIc"}
+              }
+            }
+          },
+          "401": {
+            "description": "If not authorized. Optional response with additional info explaining the reason for error.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          },
+          "500": {
+            "description": "In case of internal server error. Response with incident ID for further analysis.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {"errorReason":4,"errorMessage":"Napaka na strežniku.","incidentId":"ZvZoC3kGeHLSlTlo1Ke0bAAAAMk"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DocumentPermission": {
+        "type": "object",
+        "properties": {
+          "mandator": {
+            "$ref": "#/components/schemas/TaxPayer"
+          },
+          "formCode": {
+            "type": "string",
+            "description": "Form code of the document type.",
+            "nullable": true
+          },
+          "fill": {
+            "type": "boolean",
+            "description": "Permission to fill documents."
+          },
+          "sign": {
+            "type": "boolean",
+            "description": "Permission to sign documents."
+          },
+          "viewSent": {
+            "type": "boolean",
+            "description": "Permission to view sent documents."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Description of permissions for a document type."
+      },
+      "DocumentPermissionsResponse": {
+        "type": "object",
+        "properties": {
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentPermission"
+            },
+            "description": "List of permissions for documents.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response to query about document permissions."
+      },
+      "ErrorReason": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "description": "Enum of possible error reason types.\n\n0 = BadRequest\n\n1 = Unauthorized\n\n2 = Forbidden\n\n3 = NotFound\n\n4 = ServerError",
+        "format": "int32",
+        "x-enumNames": [
+          "BadRequest",
+          "Unauthorized",
+          "Forbidden",
+          "NotFound",
+          "ServerError"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errorReason": {
+            "$ref": "#/components/schemas/ErrorReason"
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message in case the method call failed.",
+            "nullable": true
+          },
+          "incidentId": {
+            "type": "string",
+            "description": "Optional incident ID in case the method call failed.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response in case of error."
+      },
+      "HeartbeatResponse": {
+        "type": "object",
+        "properties": {
+          "hostingEnvironment": {
+            "type": "string",
+            "description": "The hosting environment.",
+            "nullable": true
+          },
+          "apiVersion": {
+            "type": "string",
+            "description": "The API version.",
+            "nullable": true
+          },
+          "productVersion": {
+            "type": "string",
+            "description": "The product version.",
+            "nullable": true
+          },
+          "serverTime": {
+            "type": "string",
+            "description": "The server time.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Defines HeartbeatResponse"
+      },
+      "InvoiceBookFormat": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "description": "Types of invoice book formats.",
+        "format": "int32",
+        "x-enumNames": [
+          "XML",
+          "JSON",
+          "CSV"
+        ]
+      },
+      "InvoiceBookStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "type": "integer",
+        "description": "Invoice book statuses.\n\n0 = Uploaded\n\n1 = Validating\n\n2 = ValidatedOk\n\n3 = ValidationError\n\n4 = InProcess\n\n5 = ProcessedOk\n\n6 = ProcessedError",
+        "format": "int32",
+        "x-enumNames": [
+          "Uploaded",
+          "Validating",
+          "ValidatedOk",
+          "ValidationError",
+          "InProcess",
+          "ProcessedOk",
+          "ProcessedError"
+        ]
+      },
+      "InvoiceBookStatusResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/InvoiceBookStatus"
+          },
+          "validationMessage": {
+            "type": "string",
+            "description": "Optional message from validation.",
+            "nullable": true
+          },
+          "backendMessage": {
+            "type": "string",
+            "description": "Optional message from backend.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response to a query about invoice book status."
+      },
+      "OpenPeriod": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "representedForeignerId": {
+            "type": "string",
+            "description": "Optional ID of the represented foreigner.",
+            "nullable": true
+          },
+          "dueDate": {
+            "type": "string",
+            "description": "The due date.",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Open Period"
+      },
+      "OpenPeriodsResponse": {
+        "type": "object",
+        "properties": {
+          "openPeriods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OpenPeriod"
+            },
+            "description": "List of open periods",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Open Periods Response"
+      },
+      "Period": {
+        "type": "object",
+        "properties": {
+          "begin": {
+            "type": "string",
+            "description": "Start Date for Period",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end": {
+            "type": "string",
+            "description": "End Date for Period",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Document Period"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "TaxPayer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID - tax number",
+            "format": "int32"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TaxPayerType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Tax payer data"
+      },
+      "TaxPayerType": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "description": "Enum of taxpayer types.\n\n0 = FO\n\n1 = SP\n\n2 = PO",
+        "format": "int32",
+        "x-enumNames": [
+          "FO",
+          "SP",
+          "PO"
+        ]
+      },
+      "TokenResponse": {
+        "type": "object",
+        "properties": {
+          "expires": {
+            "type": "string",
+            "description": "Token expiration date.",
+            "format": "date-time"
+          },
+          "token": {
+            "type": "string",
+            "description": "The JWT authentication token.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Model for JWT token response."
+      },
+      "UploadInvoiceBookRequest": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "$ref": "#/components/schemas/Period"
+          },
+          "format": {
+            "$ref": "#/components/schemas/InvoiceBookFormat"
+          },
+          "schemaVersion": {
+            "type": "integer",
+            "description": "Invoice book schema version.",
+            "format": "int32"
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Client correlation ID.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request for method UploadBook"
+      },
+      "UploadInvoiceBookResponse": {
+        "type": "object",
+        "properties": {
+          "edpId": {
+            "type": "string",
+            "description": "ID assigned to the uploaded invoice book.",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/InvoiceBookStatus"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response for method UploadBook"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Please insert JWT with Bearer into field. Example value(Enter token without braces.): Bearer {JwtToken} ",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

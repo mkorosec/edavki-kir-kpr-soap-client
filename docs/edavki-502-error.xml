@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="157e8a50-a9e5-4895-9d15-053ac138261a" activeEnvironment="Default" name="SoapService" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="85a07bfd-80cd-4069-aa12-f15d4ecc9f56" wsaVersion="NONE" name="BasicHttpBinding_ISoapService" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_ISoapService" soapVersion="1_1" anonymous="optional" definition="file:/home/mkorosec/projects/opensource/edavki-api-java/src/main/resources/wsdl/SoapService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/mkorosec/projects/opensource/edavki-api-java/src/main/resources/wsdl/SoapService.wsdl"><con:part><con:url>file:/home/mkorosec/projects/opensource/edavki-api-java/src/main/resources/wsdl/SoapService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="SoapService" targetNamespace="http://tempuri.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_ISoapService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization"/>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Message" xmlns:tns="http://schemas.microsoft.com/Message" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:simpleType name="StreamBody">
+        <xs:restriction base="xs:base64Binary"/>
+      </xs:simpleType>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/Message"/>
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+      <xs:element name="UploadInvoiceBookRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="data" type="q1:StreamBody" xmlns:q1="http://schemas.microsoft.com/Message"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CorrelationId" nillable="true" type="xs:string"/>
+      <xs:element name="Format" type="q2:InvoiceBookFormat" xmlns:q2="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+      <xs:element name="Period" nillable="true" type="q3:Period" xmlns:q3="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+      <xs:element name="SchemaVersion" type="xs:int"/>
+      <xs:element name="UploadInvoiceBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="EdpId" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Status" type="q4:InvoiceBookStatus" xmlns:q4="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInvoiceBookStatus">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="edpId" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInvoiceBookStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetInvoiceBookStatusResult" nillable="true" type="q5:InvoiceBookStatusResponse" xmlns:q5="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOpenPeriods">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="formCode" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOpenPeriodsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetOpenPeriodsResult" nillable="true" type="q6:OpenPeriodsResponse" xmlns:q6="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPermissions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="formCode" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPermissionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetPermissionsResult" nillable="true" type="q7:DocumentPermissionsResponse" xmlns:q7="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models" xmlns:tns="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:simpleType name="InvoiceBookFormat">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="XML"/>
+          <xs:enumeration value="JSON"/>
+          <xs:enumeration value="CSV"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="InvoiceBookFormat" nillable="true" type="tns:InvoiceBookFormat"/>
+      <xs:complexType name="Period">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Begin" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="End" nillable="true" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Period" nillable="true" type="tns:Period"/>
+      <xs:simpleType name="InvoiceBookStatus">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Uploaded"/>
+          <xs:enumeration value="Validating"/>
+          <xs:enumeration value="ValidatedOk"/>
+          <xs:enumeration value="ValidationError"/>
+          <xs:enumeration value="InProcess"/>
+          <xs:enumeration value="ProcessedOk"/>
+          <xs:enumeration value="ProcessedError"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="InvoiceBookStatus" nillable="true" type="tns:InvoiceBookStatus"/>
+      <xs:complexType name="InvoiceBookStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BackendMessage" nillable="true" type="xs:string"/>
+          <xs:element name="Status" type="tns:InvoiceBookStatus"/>
+          <xs:element minOccurs="0" name="ValidationMessage" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InvoiceBookStatusResponse" nillable="true" type="tns:InvoiceBookStatusResponse"/>
+      <xs:complexType name="OpenPeriodsResponse">
+        <xs:sequence>
+          <xs:element name="OpenPeriods" nillable="true" type="tns:ArrayOfOpenPeriod"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OpenPeriodsResponse" nillable="true" type="tns:OpenPeriodsResponse"/>
+      <xs:complexType name="ArrayOfOpenPeriod">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OpenPeriod" nillable="true" type="tns:OpenPeriod"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOpenPeriod" nillable="true" type="tns:ArrayOfOpenPeriod"/>
+      <xs:complexType name="OpenPeriod">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DueDate" nillable="true" type="xs:dateTime"/>
+          <xs:element name="Period" nillable="true" type="tns:Period"/>
+          <xs:element minOccurs="0" name="RepresentedForeignerId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OpenPeriod" nillable="true" type="tns:OpenPeriod"/>
+      <xs:complexType name="DocumentPermissionsResponse">
+        <xs:sequence>
+          <xs:element name="Permissions" nillable="true" type="tns:ArrayOfDocumentPermission"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DocumentPermissionsResponse" nillable="true" type="tns:DocumentPermissionsResponse"/>
+      <xs:complexType name="ArrayOfDocumentPermission">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentPermission" nillable="true" type="tns:DocumentPermission"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfDocumentPermission" nillable="true" type="tns:ArrayOfDocumentPermission"/>
+      <xs:complexType name="DocumentPermission">
+        <xs:sequence>
+          <xs:element name="Fill" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="FormCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Mandator" nillable="true" type="tns:TaxPayer"/>
+          <xs:element name="Sign" type="xs:boolean"/>
+          <xs:element name="ViewSent" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DocumentPermission" nillable="true" type="tns:DocumentPermission"/>
+      <xs:complexType name="TaxPayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int"/>
+          <xs:element minOccurs="0" name="Type" type="tns:TaxPayerType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TaxPayer" nillable="true" type="tns:TaxPayer"/>
+      <xs:simpleType name="TaxPayerType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="FO"/>
+          <xs:enumeration value="SP"/>
+          <xs:enumeration value="PO"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="TaxPayerType" nillable="true" type="tns:TaxPayerType"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap" xmlns:tns="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="BadRequestFault">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BasicFault">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="BadRequestFault" nillable="true" type="tns:BadRequestFault"/>
+      <xs:complexType name="BasicFault">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BasicFault" nillable="true" type="tns:BasicFault"/>
+      <xs:complexType name="UnauthorizedFault">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BasicFault">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UnauthorizedFault" nillable="true" type="tns:UnauthorizedFault"/>
+      <xs:complexType name="ServerErrorFault">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BasicFault">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ServerErrorFault" nillable="true" type="tns:ServerErrorFault"/>
+      <xs:complexType name="ForbiddenFault">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BasicFault">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ForbiddenFault" nillable="true" type="tns:ForbiddenFault"/>
+      <xs:complexType name="NotFoundFault">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:BasicFault">
+            <xs:sequence/>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="NotFoundFault" nillable="true" type="tns:NotFoundFault"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadInvoiceBookRequest">
+    <wsdl:part name="parameters" element="tns:UploadInvoiceBookRequest"/>
+  </wsdl:message>
+  <wsdl:message name="UploadInvoiceBookRequest_Headers">
+    <wsdl:part name="CorrelationId" element="tns:CorrelationId"/>
+    <wsdl:part name="Format" element="tns:Format"/>
+    <wsdl:part name="Period" element="tns:Period"/>
+    <wsdl:part name="SchemaVersion" element="tns:SchemaVersion"/>
+  </wsdl:message>
+  <wsdl:message name="UploadInvoiceBookResponse">
+    <wsdl:part name="parameters" element="tns:UploadInvoiceBookResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_UploadInvoiceBook_BadRequestFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:BadRequestFault" xmlns:q1="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_UploadInvoiceBook_UnauthorizedFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q2:UnauthorizedFault" xmlns:q2="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_UploadInvoiceBook_ServerErrorFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q3:ServerErrorFault" xmlns:q3="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceBookStatus"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceBookStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_BadRequestFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q4:BadRequestFault" xmlns:q4="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_UnauthorizedFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q5:UnauthorizedFault" xmlns:q5="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_ForbiddenFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q6:ForbiddenFault" xmlns:q6="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_NotFoundFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q7:NotFoundFault" xmlns:q7="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetInvoiceBookStatus_ServerErrorFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q8:ServerErrorFault" xmlns:q8="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetOpenPeriods_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOpenPeriods"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetOpenPeriods_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOpenPeriodsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetOpenPeriods_BadRequestFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q9:BadRequestFault" xmlns:q9="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetOpenPeriods_UnauthorizedFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q10:UnauthorizedFault" xmlns:q10="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetOpenPeriods_ServerErrorFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q11:ServerErrorFault" xmlns:q11="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissions"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetPermissions_BadRequestFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q12:BadRequestFault" xmlns:q12="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:message name="ISoapService_GetPermissions_ServerErrorFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="q13:ServerErrorFault" xmlns:q13="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Soap"/>
+  </wsdl:message>
+  <wsdl:portType name="ISoapService">
+    <wsdl:operation name="UploadInvoiceBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/UploadInvoiceBook" name="UploadInvoiceBookRequest" message="tns:UploadInvoiceBookRequest"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/UploadInvoiceBookResponse" name="UploadInvoiceBookResponse" message="tns:UploadInvoiceBookResponse"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/UploadInvoiceBookBadRequestFaultFault" name="BadRequestFaultFault" message="tns:ISoapService_UploadInvoiceBook_BadRequestFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/UploadInvoiceBookUnauthorizedFaultFault" name="UnauthorizedFaultFault" message="tns:ISoapService_UploadInvoiceBook_UnauthorizedFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/UploadInvoiceBookServerErrorFaultFault" name="ServerErrorFaultFault" message="tns:ISoapService_UploadInvoiceBook_ServerErrorFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceBookStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatus" message="tns:ISoapService_GetInvoiceBookStatus_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatusResponse" message="tns:ISoapService_GetInvoiceBookStatus_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatusBadRequestFaultFault" name="BadRequestFaultFault" message="tns:ISoapService_GetInvoiceBookStatus_BadRequestFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatusUnauthorizedFaultFault" name="UnauthorizedFaultFault" message="tns:ISoapService_GetInvoiceBookStatus_UnauthorizedFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatusForbiddenFaultFault" name="ForbiddenFaultFault" message="tns:ISoapService_GetInvoiceBookStatus_ForbiddenFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatusNotFoundFaultFault" name="NotFoundFaultFault" message="tns:ISoapService_GetInvoiceBookStatus_NotFoundFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetInvoiceBookStatusServerErrorFaultFault" name="ServerErrorFaultFault" message="tns:ISoapService_GetInvoiceBookStatus_ServerErrorFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenPeriods">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/GetOpenPeriods" message="tns:ISoapService_GetOpenPeriods_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/GetOpenPeriodsResponse" message="tns:ISoapService_GetOpenPeriods_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetOpenPeriodsBadRequestFaultFault" name="BadRequestFaultFault" message="tns:ISoapService_GetOpenPeriods_BadRequestFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetOpenPeriodsUnauthorizedFaultFault" name="UnauthorizedFaultFault" message="tns:ISoapService_GetOpenPeriods_UnauthorizedFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetOpenPeriodsServerErrorFaultFault" name="ServerErrorFaultFault" message="tns:ISoapService_GetOpenPeriods_ServerErrorFaultFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISoapService/GetPermissions" message="tns:ISoapService_GetPermissions_InputMessage"/>
+      <wsdl:output wsaw:Action="http://tempuri.org/ISoapService/GetPermissionsResponse" message="tns:ISoapService_GetPermissions_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetPermissionsBadRequestFaultFault" name="BadRequestFaultFault" message="tns:ISoapService_GetPermissions_BadRequestFaultFault_FaultMessage"/>
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISoapService/GetPermissionsServerErrorFaultFault" name="ServerErrorFaultFault" message="tns:ISoapService_GetPermissions_ServerErrorFaultFault_FaultMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISoapService" type="tns:ISoapService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_ISoapService_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="UploadInvoiceBook">
+      <soap:operation soapAction="http://tempuri.org/ISoapService/UploadInvoiceBook" style="document"/>
+      <wsdl:input name="UploadInvoiceBookRequest">
+        <soap:header message="tns:UploadInvoiceBookRequest_Headers" part="CorrelationId" use="literal"/>
+        <soap:header message="tns:UploadInvoiceBookRequest_Headers" part="Format" use="literal"/>
+        <soap:header message="tns:UploadInvoiceBookRequest_Headers" part="Period" use="literal"/>
+        <soap:header message="tns:UploadInvoiceBookRequest_Headers" part="SchemaVersion" use="literal"/>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UploadInvoiceBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BadRequestFaultFault">
+        <soap:fault use="literal" name="BadRequestFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="UnauthorizedFaultFault">
+        <soap:fault use="literal" name="UnauthorizedFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFaultFault">
+        <soap:fault use="literal" name="ServerErrorFaultFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceBookStatus">
+      <soap:operation soapAction="http://tempuri.org/ISoapService/GetInvoiceBookStatus" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BadRequestFaultFault">
+        <soap:fault use="literal" name="BadRequestFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="UnauthorizedFaultFault">
+        <soap:fault use="literal" name="UnauthorizedFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="ForbiddenFaultFault">
+        <soap:fault use="literal" name="ForbiddenFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundFaultFault">
+        <soap:fault use="literal" name="NotFoundFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFaultFault">
+        <soap:fault use="literal" name="ServerErrorFaultFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenPeriods">
+      <soap:operation soapAction="http://tempuri.org/ISoapService/GetOpenPeriods" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BadRequestFaultFault">
+        <soap:fault use="literal" name="BadRequestFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="UnauthorizedFaultFault">
+        <soap:fault use="literal" name="UnauthorizedFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFaultFault">
+        <soap:fault use="literal" name="ServerErrorFaultFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissions">
+      <soap:operation soapAction="http://tempuri.org/ISoapService/GetPermissions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BadRequestFaultFault">
+        <soap:fault use="literal" name="BadRequestFaultFault" namespace=""/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFaultFault">
+        <soap:fault use="literal" name="ServerErrorFaultFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SoapService">
+    <wsdl:port name="BasicHttpBinding_ISoapService" binding="tns:BasicHttpBinding_ISoapService">
+      <soap:address location="http://dursweb.endava.net:6507/INVOICEBOOKSERVICE/SoapService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://dursweb.endava.net:6507/INVOICEBOOKSERVICE/SoapService/</con:endpoint></con:endpoints><con:operation id="a2ed6a8b-3bc6-4443-8149-ae6cfb12cf84" isOneWay="false" action="http://tempuri.org/ISoapService/GetInvoiceBookStatus" name="GetInvoiceBookStatus" bindingOperationName="GetInvoiceBookStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6f408c52-dda0-42c6-9158-a0244d42f876" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://dursweb.endava.net:6507/INVOICEBOOKSERVICE/SoapService/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:GetInvoiceBookStatus>
+         <!--Optional:-->
+         <tem:edpId>?</tem:edpId>
+      </tem:GetInvoiceBookStatus>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/ISoapService/GetInvoiceBookStatus"/></con:call></con:operation><con:operation id="b6a358f2-606c-4ddf-9d9d-e46eb9fb2aeb" isOneWay="false" action="http://tempuri.org/ISoapService/GetOpenPeriods" name="GetOpenPeriods" bindingOperationName="GetOpenPeriods" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a9046cab-2334-4a1b-8a9e-ce90df3cde01" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://dursweb.endava.net:6507/INVOICEBOOKSERVICE/SoapService/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:GetOpenPeriods>
+         <!--Optional:-->
+         <tem:formCode>?</tem:formCode>
+      </tem:GetOpenPeriods>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/ISoapService/GetOpenPeriods"/></con:call></con:operation><con:operation id="3543d505-9d71-44d0-b71d-11476962b904" isOneWay="false" action="http://tempuri.org/ISoapService/GetPermissions" name="GetPermissions" bindingOperationName="GetPermissions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9f9fde9e-ce9f-479c-8dcc-ff1aed874c4a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://dursweb.endava.net:6507/INVOICEBOOKSERVICE/SoapService/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:GetPermissions>
+         <!--Optional:-->
+         <tem:formCode>?</tem:formCode>
+      </tem:GetPermissions>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/ISoapService/GetPermissions"/></con:call></con:operation><con:operation id="7e13283f-901b-4e1c-ad1d-14aab4c383dd" isOneWay="false" action="http://tempuri.org/ISoapService/UploadInvoiceBook" name="UploadInvoiceBook" bindingOperationName="UploadInvoiceBook" type="Request-Response" outputName="UploadInvoiceBookResponse" inputName="UploadInvoiceBookRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2e08940c-f9d3-45cb-be19-16e0d299de9c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Authorization" value="Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkM5NTZCMUY5QjRCNUJBMThFMTBEMzNFMjk2OTExQTc1Rjg0QTZENUQiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiIzODkxNjY3MyIsImp0aSI6IjBmMmZlMDg2LWFkNzUtNGY4OC04MWMzLWQ5ZDMwM2Y5NGY1YiIsImlhdCI6MTc0MjIwODc1NiwiTG9naW5JZCI6IjEyMDgwIiwiTG9naW5UeXBlIjoiQ2VydGlmaWNhdGUiLCJVc2VyUHJvZmlsZUlkIjoiOTY5OSIsIkluZGl2aWR1YWxQZXJzb25JZCI6IjM4OTE2NjczIiwiVGF4UGF5ZXJJZCI6IjM4OTE2NjczIiwiVGF4UGF5ZXJUeXBlIjoiRk8iLCJSZXByZXNlbnRpbmdJZCI6IjM4OTE2NjczIiwiUmVwcmVzZW50aW5nVHlwZSI6IkZPIiwiZXhwIjoxNzQyMjE0MTU2LCJpc3MiOiJodHRwczovL2JldGEuZWRhdmtpLmR1cnMuc2kvIiwiYXVkIjoiaHR0cHM6Ly9iZXRhLmVkYXZraS5kdXJzLnNpLyJ9.X8VSe8gFCA0slvedy4SAIOXNAWpgeYmb4GMw3ilkFUBeo3-RO6GK7PuY35P5G0tL4UprBq6utKInv1Md3wUDlwBod7cHaY_BJCIi8d1Fsr0ICX7vc7KYO-7ieEI9fwFsX2I8Dgyl_8KymHz-DQU0dAgLPBsEsLQX-udKpB6V4jmuVaEUFdp4x94qwpiuywyc8jrYc-X2Z7RdxsIEKnJSJLK18vXICa39T9m2jc6Zt220VFur-4_W22dNTLLUbk7St8Ze6CVwK1FcuByYHsTNpy10Ise5_2R7sc1BGgWms-AykP7ZVrYv3vC39wfMtU8M3_xz4GFwlU34xrtfW14PUQ" xmlns="http://eviware.com/soapui/config"/></con:setting><con:setting id="WsdlSettings@enable-mtom">true</con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://beta.edavki.durs.si/InvoiceBookService/SoapService/</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:end="http://schemas.datacontract.org/2004/07/Endava.Edp.InvoiceBook.Web.Models">
+   <soapenv:Header>
+      <tem:SchemaVersion>0</tem:SchemaVersion>
+      <tem:Period>
+         <!--Optional:-->
+         <end:Begin>2024-01-01</end:Begin>
+         <!--Optional:-->
+         <end:End>2024-01-31</end:End>
+      </tem:Period>
+      <tem:Format>CSV</tem:Format>
+      <tem:CorrelationId>1233</tem:CorrelationId>
+   </soapenv:Header>
+   <soapenv:Body>
+      <tem:UploadInvoiceBookRequest>
+         <tem:data>cid:test_KIR_CSV.zip</tem:data>
+      </tem:UploadInvoiceBookRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:attachment><con:name>test_KIR_CSV.zip</con:name><con:contentType>application/zip</con:contentType><con:size>445</con:size><con:contentId>test_KIR_CSV.zip</con:contentId><con:url>/home/mkorosec/projects/opensource/edavki-api-java/test-data/38916673/to_upload/data-package-1-march-2025/test_KIR_CSV.zip</con:url><con:data>UEsDBBQACAgIAMxdcVoAAAAAAAAAAAAAAAAQAAAAdGVzdF9LSVJfQ1NWLnppcAvwZmYRYWBg4GCYsaIgSnNp121mRgaGcCYGBiEGGYbixNyCnNT47Myi+OyCIr3k4rLQEE4G5gd619NBuLSCm4GR5QUzAwOY6J0Q6N9sIHD8/k+Rv0zRt5wkT9syvmWWvsR2Y1G14YyrLEbtjDFfbnOvVpLaPMHs/+5svf+74z8/ihWV39Vp8WR3L0cnp0jKgdQNgv2T+jWnb+gNurFK5NtKebeNLCeZ9ZIKG5asF+6Y5HOSJ0SrQud32consQ+it21XW7d7E2ND0isdg5fvZ9xi2fXMV7pSz+/t9knxoetuv4tZdH1ZzcVeU50kHTf5Q79+/m7VVP/H0ryqf+o7rd4/Ci7HU+/Kn1CS+K4k8Vj1WEG0xtyLJs77PPSe73JtY17zMPj/hwCbpwvtbe6JzLzuf3Tpmy8rnb7zt3PO2V40M/nywS/xFmlxnLOb60SP72wz3d24mOeceoA3I5McM64AlWAAASCXYUsjiIUteFkhwYsWtAHerGwQvYwMEUDaH2QIAwBQSwcI0VbXIoQBAAC9AQAAUEsBAhQAFAAICAgAzF1xWtFW1yKEAQAAvQEAABAAAAAAAAAAAAAAAAAAAAAAAHRlc3RfS0lSX0NTVi56aXBQSwUGAAAAAAEAAQA+AAAAwgEAAAAA</con:data><con:id>ace2e5fa-a90c-4a64-9e4d-e2a379571fa7</con:id></con:attachment><con:attachment><con:name>test_KIR_CSV.zip</con:name><con:contentType>application/octet-stream</con:contentType><con:size>445</con:size><con:contentId>test_KIR_CSV.zip</con:contentId><con:url>/home/mkorosec/projects/opensource/edavki-api-java/test-data/38916673/to_upload/data-package-1-march-2025/test_KIR_CSV.zip</con:url><con:data>UEsDBBQACAgIAEBfcVoAAAAAAAAAAAAAAAAQAAAAdGVzdF9LSVJfQ1NWLnppcAvwZmYRYWBg4GCYsaIgSnNp121mRgaGcCYGBiEGGYbixNyCnNT47Myi+OyCIr3k4rLQEE4G5gd619NBuLSCm4GR5QUzAwOY6J0Q6N9sIHD8/k+Rv0zRt5wkT9syvmWWvsR2Y1G14YyrLEbtjDFfbnOvVpLaPMHs/+5svf+74z8/ihWV39Vp8WR3L0cnp0jKgdQNgv2T+jWnb+gNurFK5NtKebeNLCeZ9ZIKG5asF+6Y5HOSJ0SrQud32consQ+it21XW7d7E2ND0isdg5fvZ9xi2fXMV7pSz+/t9knxoetuv4tZdH1ZzcVeU50kHTf5Q79+/m7VVP/H0ryqf+o7rd4/Ci7HU+/Kn1CS+K4k8Vj1WEG0xtyLJs77PPSe73JtY17zMPj/hwCbpwvtbe6JzLzuf3Tpmy8rnb7zt3PO2V40M/nywS/xFmlxnLOb60SP72wz3d24mOeceoA3I5McM64AlWAAASCXYUsjiIUteFkhwYsWtAHerGwQvYwMEUDaH2QIAwBQSwcI0VbXIoQBAAC9AQAAUEsBAhQAFAAICAgAQF9xWtFW1yKEAQAAvQEAABAAAAAAAAAAAAAAAAAAAAAAAHRlc3RfS0lSX0NTVi56aXBQSwUGAAAAAAEAAQA+AAAAwgEAAAAA</con:data><con:id>bcbc5edf-6ed8-4adb-ab6b-a7f92391c25e</con:id></con:attachment><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/ISoapService/UploadInvoiceBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
