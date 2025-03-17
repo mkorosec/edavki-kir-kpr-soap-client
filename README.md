@@ -1,4 +1,8 @@
 
+# Build
+
+`mvn clean package`
+
 # Zagon
 
 ## Preizkus delovanja prijave
