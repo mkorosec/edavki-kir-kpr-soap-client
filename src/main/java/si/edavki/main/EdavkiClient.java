@@ -51,8 +51,8 @@ public class EdavkiClient {
     private static final String INVOICE_BOOK_SERVICE_URL;
     private static final boolean BETA_MODE;
 
-    private static final int WAIT_FOR_VALIDATION_SECONDS = Integer.parseInt(System.getProperty("si.edavki.async.validation.pollingTimeSeconds", "2"));
-    private static final int WAIT_FOR_VALIDATION_POLL_INTERVAL_SECONDS = Integer.parseInt(System.getProperty("si.edavki.async.validation.waitTimeSeconds", "120"));
+    private static final int WAIT_FOR_VALIDATION_SECONDS = Integer.parseInt(System.getProperty("si.edavki.async.validation.waitTimeSeconds", "120"));
+    private static final int WAIT_FOR_VALIDATION_POLL_INTERVAL_SECONDS = Integer.parseInt(System.getProperty("si.edavki.async.validation.pollingTimeSeconds", "2"));
 
     static {
         BETA_MODE = "TRUE".equalsIgnoreCase(System.getProperty("si.edavki.beta"));
@@ -169,7 +169,7 @@ public class EdavkiClient {
         //sprašuj servis po statusu paketa, dokler ne pridemo v final status (aka obdelava na edavki je končana)
         logger.info("preverjam status paketa, edpId={}", edpId);
         AtomicReference<InvoiceBookStatusResponse> invoiceBookStatus = new AtomicReference<>();
-        await().atMost(WAIT_FOR_VALIDATION_SECONDS, SECONDS).pollInterval(WAIT_FOR_VALIDATION_SECONDS, SECONDS).until(() -> {
+        await().atMost(WAIT_FOR_VALIDATION_SECONDS, SECONDS).pollInterval(WAIT_FOR_VALIDATION_POLL_INTERVAL_SECONDS, SECONDS).until(() -> {
             InvoiceBookStatusResponse s = invoiceBookService.getInvoiceBookStatus(edpId);
             invoiceBookStatus.set(s);
             logger.info("> preverjam status paketa, edpId={}, status={}", edpId, s != null && s.getStatus() != null ? s.getStatus().value() : "null");
