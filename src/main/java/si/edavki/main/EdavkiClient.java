@@ -340,7 +340,8 @@ public class EdavkiClient {
 
         // Set up trust manager factory
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-        trustManagerFactory.init(keyStore);
+        trustManagerFactory.init((KeyStore) null); // Use the default trust store (cacerts)
+        //trustManagerFactory.init(keyStore);
 
         // Create SSL context
         SSLContext sslContext = SSLContext.getInstance("TLS");
